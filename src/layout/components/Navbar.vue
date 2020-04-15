@@ -3,7 +3,7 @@
     <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
-
+    <span style="line-height:50px;margin-left:100px">{{ timer }}</span>
     <div class="right-menu">
       <template v-if="device!=='mobile'">
         <search id="header-search" class="right-menu-item" />
@@ -53,7 +53,7 @@ import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
-
+import { parseTime } from '../../utils'
 export default {
   components: {
     Breadcrumb,
@@ -63,6 +63,12 @@ export default {
     SizeSelect,
     Search
   },
+  data() {
+    return {
+      timer: new Date(),
+      interval: null
+    }
+  },
   computed: {
     ...mapGetters([
       'sidebar',
@@ -70,7 +76,19 @@ export default {
       'device'
     ])
   },
+
+  mounted() {
+    this.interval = setInterval(() => {
+      this.currentTime()
+    }, 1000)
+  },
+  beforeDestroy() {
+    clearInterval(this.interval)
+  },
   methods: {
+    currentTime() {
+      this.timer = parseTime(new Date(), '{y}-{m}-{d} {h}:{i}:{s}')
+    },
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },

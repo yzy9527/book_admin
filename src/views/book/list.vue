@@ -110,7 +110,6 @@
           <template slot-scope="{row}">
             <el-button type="text" icon="el-icon-edit" @click="handleUpdate(row)" />
             <el-button type="text" style="color:#f56c6c" icon="el-icon-delete" @click="handleDelete(row)" />
-
           </template>
         </el-table-column>
       </el-table>

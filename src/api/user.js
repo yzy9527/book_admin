@@ -21,3 +21,11 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function gopage() {
+  return request({
+    url: '/user/gopage',
+    method: 'post'
+  })
+}
+
