@@ -189,3 +189,12 @@ aside {
 .multiselect--active {
   z-index: 1000 !important;
 }
+.echarts {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.el-card__header{
+  border-bottom: none;
+  padding: 0;
+}

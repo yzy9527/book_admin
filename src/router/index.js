@@ -102,6 +102,28 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/report',
+    component: Layout,
+    redirect: '/report/list',
+    meta: {
+      title: '数据报告',
+      breadcrumb: false,
+      icon: 'documentation',
+      roles: ['admin', 'editor']
+    },
+    children: [
+      {
+        path: '/report/list',
+        component: () => import('@/views/screen-report'),
+        name: 'report',
+        meta: {
+          title: '数据报表',
+          icon: 'report',
+          roles: ['admin']
+        }
+      }]
+  },
+  {
     path: '*',
     redirect: '/404',
     hidden: true

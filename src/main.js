@@ -18,7 +18,11 @@ import './permission' // permission control
 import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
-
+import './plugins/vcharts'
+import ECharts from 'echarts'
+import VueECharts from 'vue-echarts'
+Vue.prototype.$echarts = ECharts
+Vue.component('v-chart', VueECharts)
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

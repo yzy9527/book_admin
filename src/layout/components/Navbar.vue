@@ -3,7 +3,6 @@
     <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
-    <span style="line-height:50px;margin-left:100px">{{ timer }}</span>
     <div class="right-menu">
       <template v-if="device!=='mobile'">
         <search id="header-search" class="right-menu-item" />
@@ -30,12 +29,6 @@
           <router-link to="/">
             <el-dropdown-item>Dashboard</el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">Log Out</span>
           </el-dropdown-item>
@@ -78,12 +71,12 @@ export default {
   },
 
   mounted() {
-    this.interval = setInterval(() => {
-      this.currentTime()
-    }, 1000)
+    // this.interval = setInterval(() => {
+    //   this.currentTime()
+    // }, 1000)
   },
   beforeDestroy() {
-    clearInterval(this.interval)
+    // clearInterval(this.interval)
   },
   methods: {
     currentTime() {
