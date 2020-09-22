@@ -229,6 +229,7 @@ export default {
       })
     },
     refresh() {
+      console.log('888')
       this.$router.push({
         path: '/book/list',
         query: this.listQuery
@@ -274,7 +275,8 @@ export default {
             type: 'success',
             duration: 2000
           })
-          this.handleFilter()
+          // this.handleFilter()
+          this.getList()
         })
       }).catch(() => {})
     }

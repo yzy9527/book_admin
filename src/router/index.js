@@ -28,6 +28,19 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: '/compress',
+    component: Layout,
+    children: [{
+      path: 'index',
+      component: () => import('@/views/compress'),
+      meta: {
+        title: '文件压缩',
+        icon: 'visual',
+        roles: ['admin']
+      }
+    }]
+  },
+  {
     path: '/404',
     component: () => import('@/views/error-page/404'),
     hidden: true
@@ -101,28 +114,39 @@ export const asyncRoutes = [
       }
     ]
   },
+
   {
-    path: '/report',
+    path: '/visual',
     component: Layout,
-    redirect: '/report/list',
+    redirect: '/visual/report',
     meta: {
-      title: '数据报告',
+      title: '可视化',
       breadcrumb: false,
-      icon: 'documentation',
-      roles: ['admin', 'editor']
+      icon: 'visual',
+      roles: ['admin']
     },
     children: [
       {
-        path: '/report/list',
-        component: () => import('@/views/screen-report'),
+        path: '/visual/report',
+        component: () => import('@/views/datav/screen-report'),
         name: 'report',
         meta: {
           title: '数据报表',
           icon: 'report',
           roles: ['admin']
         }
+      }, {
+        path: '/visual/bmap',
+        component: () => import('@/views/datav/bmap'),
+        name: 'bmap',
+        meta: {
+          title: '百度地图案例',
+          icon: 'bmap',
+          roles: ['admin']
+        }
       }]
   },
+
   {
     path: '*',
     redirect: '/404',

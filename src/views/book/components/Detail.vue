@@ -232,7 +232,8 @@ export default {
   },
   data() {
     const validateRequire = (rule, value, callback) => {
-      if (value && value.length === 0) {
+      console.log('value', fields[rule.field], value)
+      if (value.length === 0) {
         callback(new Error(fields[rule.field] + '必须填写'))
       } else {
         callback()
@@ -240,7 +241,12 @@ export default {
     }
     return {
       loading: false,
-      postForm: {},
+      postForm: {
+        title: '',
+        author: '',
+        publisher: '',
+        language: ''
+      },
       fileList: [],
       contentsTree: [],
       labelWidth: '120px',
@@ -285,7 +291,7 @@ export default {
       // if (!this.loading) {
       this.loading = true
       this.$refs.postForm.validate((valid, fields) => {
-        console.log('valid', valid)
+        console.log('valid', valid, this.postForm)
 
         if (valid) {
           // 对postForm进行浅拷贝，防止修改postform对象修改影响页面展示，浅拷贝2种方法

@@ -9,10 +9,10 @@
 
 <script>
 
-import TopView from '@/components/datav/TopView'
-import BottomView from '@/components/datav/BottomView'
-import MapView from '@/components/datav/MapView'
-import SaleView from '@/components/datav/SalesView'
+import TopView from '@/components/datav/TopView/index'
+import BottomView from '@/components/datav/BottomView/index'
+import MapView from '@/components/datav/MapView/index'
+import SaleView from '@/components/datav/SalesView/index'
 import { wordcloud, screenData, mapScatter } from '@/api/datav'
 
 export default {
