@@ -9,7 +9,7 @@
       <el-button
         v-if="!isEdit"
         @click="showGuide"
-      >显示帮助</el-button>
+      >{{ showInfo?'隐藏帮助':'显示帮助' }}</el-button>
       <el-button
         v-loading="loading"
         type="success"
@@ -19,7 +19,7 @@
     </sticky>
     <div class="detail-container">
       <el-row>
-        <waring />
+        <waring v-if="showInfo" />
         <el-col :span="24">
           <ebook-upload
             :file-list="fileList"
@@ -240,6 +240,7 @@ export default {
       }
     }
     return {
+      showInfo: false,
       loading: false,
       postForm: {
         title: '',
@@ -276,7 +277,7 @@ export default {
       }
     },
     showGuide() {
-      this.loading = true
+      this.showInfo = !this.showInfo
     },
     submitForm() {
       const onSuccess = (res) => {

@@ -27,19 +27,7 @@ export const constantRoutes = [
     component: () => import('@/views/login/auth-redirect'),
     hidden: true
   },
-  {
-    path: '/compress',
-    component: Layout,
-    children: [{
-      path: 'index',
-      component: () => import('@/views/compress'),
-      meta: {
-        title: '文件压缩',
-        icon: 'visual',
-        roles: ['admin']
-      }
-    }]
-  },
+
   {
     path: '/404',
     component: () => import('@/views/error-page/404'),
@@ -146,7 +134,36 @@ export const asyncRoutes = [
         }
       }]
   },
+  {
+    path: '/canvas',
+    redirect: '/canvas/fileLink',
+    meta: {
+      title: 'canvas',
+      breadcrumb: false,
+      icon: 'img',
+      roles: ['admin']
+    },
+    component: Layout,
+    children: [{
+      path: 'fileLink',
+      name: 'canvasLink',
+      component: () => import('@/views/canvas/link'),
+      meta: {
+        title: 'canvas-demo',
+        icon: 'file',
+        roles: ['admin']
+      }
+    }, {
+      path: 'compress',
+      component: () => import('@/views/canvas/compress'),
+      meta: {
+        title: '文件压缩',
+        icon: 'compress',
+        roles: ['admin']
+      }
+    }]
 
+  },
   {
     path: '*',
     redirect: '/404',
