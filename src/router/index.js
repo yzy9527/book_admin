@@ -163,6 +163,24 @@ export const asyncRoutes = [
       }
     }]
 
+  }, {
+    path: '/fileDemo',
+    redirect: '/fileDemo/why100',
+    component: Layout,
+    meta: {
+      title: '项目展示',
+      icon: 'img',
+      roles: ['admin']
+    },
+    children: [{
+      path: '/why100',
+      component: () => import('@/views/fileDemo/why100/index'),
+      meta: {
+        title: '十万个为什么',
+        icon: 'img',
+        roles: ['admin']
+      }
+    }]
   },
   {
     path: '*',
